@@ -8,8 +8,8 @@ export class GridNode {
     name = '';
 
     dupe = {
-        horizontal: null,
-        vertical: null
+        horizontal: null as number,
+        vertical: null as number
     };
 
     enter(sprite: this) {
