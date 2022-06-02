@@ -14,6 +14,8 @@
             document.addEventListener('keydown', Asteroids.gameKeyDown);
 
             //Touch Controls
+
+            //Left key
             document.getElementById('left-key').onmousedown = function() {
                 Asteroids.gameTurnLeft(true);
             };
@@ -27,6 +29,7 @@
                 Asteroids.gameTurnLeft(false);
             };
 
+            //Right key
             document.getElementById('right-key').onmousedown = function() {
                 Asteroids.gameTurnRight(true);
             };
@@ -40,6 +43,7 @@
                 Asteroids.gameTurnRight(false);
             };
 
+            //Up key
             document.getElementById('up-key').onmousedown = function() {
                 Asteroids.gameGoForward(true);
             };
@@ -53,6 +57,7 @@
                 Asteroids.gameGoForward(false);
             };
 
+            //Space key
             document.getElementById('space-key').ontouchstart = function() {
                 Asteroids.gameFire(true);
             };
@@ -71,8 +76,8 @@
             };
 
             //Touch toggler
-            document.getElementById('toggle-touch-controls').onclick = function() {
-                const el = document.getElementById('touch-controls');
+            document.getElementById('touch-controls-toggler').onclick = function() {
+                const el = document.getElementById('touch-controls-container');
                 if (el.className !== 'active') {
                     el.className = 'active';
                 } else {
@@ -130,12 +135,9 @@
             align-items: center;
             justify-content: center;
         }
+        /** START This is what you need for Touch controls START **/
         
-        .game-container {
-            position: relative;
-        }
-        
-        .key {
+        .touch-key {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -147,35 +149,48 @@
             position: absolute;
             font-size: 20px;
             line-height: 20px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
         }
         
-        .key.long {
+        .touch-key:active {
+            background-color: rgba(0, 0, 0, 0.125);
+        }
+        
+        .touch-key.long {
             width: 96px;
             left: 0;
             bottom: 0;
         }
         
-        .key.right {
+        .touch-key.right {
             right: 0;
             bottom: 0;
         }
         
-        .key.left {
+        .touch-key.left {
             right: 96px;
             bottom: 0;
         }
         
-        .key.up {
+        .touch-key.up {
             right: 48px;
             bottom: 48px;
         }
         
-        .key.pause {
+        .touch-key.pause {
             top: 0;
             right: 0;
         }
         
-        #touch-controls {
+        .game-container {
+            position: relative;
+        }
+        
+        #touch-controls-container {
             position: absolute;
             left: 16px;
             bottom: 16px;
@@ -184,20 +199,18 @@
             display: none;
         }
         
-        #touch-controls.active {
+        #touch-controls-container.active {
             display: block;
         }
-        
-        .key:active {
-            background-color: rgba(0, 0, 0, 0.125);
-        }
-        /** This is the only thing that is needed to run the game! **/
+        /** END This is what you need for Touch controls END **/
+        /** START This is the only thing that is needed to run the game! START **/
         
         #canvas-container,
         #canvas {
             width: 512px;
             height: 384px;
         }
+        /** END This is the only thing that is needed to run the game! END **/
     </style>
 </head>
 
@@ -207,21 +220,21 @@
             <div id="canvas-container">
                 <canvas id="canvas"></canvas>
             </div>
-            <div id="touch-controls">
-                <button class="key left button-reset" id="left-key">←</button>
-                <button class="key right button-reset" id="right-key">→</button>
-                <button class="key up button-reset" id="up-key">↑</button>
-                <button class="key long button-reset" id="space-key"></button>
-                <button class="key pause button-reset" id="p-key">P</button>
+            <div id="touch-controls-container">
+                <button class="touch-key left button-reset" id="left-key">←</button>
+                <button class="touch-key right button-reset" id="right-key">→</button>
+                <button class="touch-key up button-reset" id="up-key">↑</button>
+                <button class="touch-key long button-reset" id="space-key"></button>
+                <button class="touch-key pause button-reset" id="p-key">P</button>
             </div>
         </div>
-        <ul class="instructions">
+        <ul>
             <li><b>Fire missile:</b> Spacebar</li>
             <li><b>Accelerate:</b> Up arrow</li>
             <li><b>Turn counter-clockwise:</b> Left Arrow</li>
             <li><b>Turn clockwise:</b> Right Arrow</li>
             <li><b>Pause:</b> p</li>
-            <li><button id="toggle-touch-controls">Toggle Touch Controls</button></li>
+            <li><button id="touch-controls-toggler">Toggle Touch Controls</button></li>
         </ul>
     </main>
 </body>
