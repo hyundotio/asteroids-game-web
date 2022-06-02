@@ -2,6 +2,10 @@ Asteroids clone built with HTML5, Canvas, and TypeScript
 
 Based off of [https://github.com/dmcinnes/HTML5-Asteroids](https://github.com/dmcinnes/HTML5-Asteroids) by Doug McInnes
 
+## Demo
+Click here for demo: [https://hyundotio.github.io/asteroids-game-web/dist/](https://hyundotio.github.io/asteroids-game-web/dist/)
+GitHub Pages hosting `./dist`
+
 ## How to use...
 1. HTML: Create a `<canvas>` element and a `<div>` (or something similar) element containing the `<canvas>`
 1. JS: Initalize the game with `initGame` function — Imported from `./GameApp/AsteroidsApp`
