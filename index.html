@@ -20,17 +20,44 @@
             document.getElementById('left-key').onmouseup = function() {
                 Asteroids.gameTurnLeft(false);
             };
+            document.getElementById('left-key').ontouchstart = function() {
+                Asteroids.gameTurnLeft(true);
+            };
+            document.getElementById('left-key').ontouchend = function() {
+                Asteroids.gameTurnLeft(false);
+            };
+
             document.getElementById('right-key').onmousedown = function() {
                 Asteroids.gameTurnRight(true);
             };
             document.getElementById('right-key').onmouseup = function() {
                 Asteroids.gameTurnRight(false);
             };
+            document.getElementById('right-key').ontouchstart = function() {
+                Asteroids.gameTurnRight(true);
+            };
+            document.getElementById('right-key').ontouchend = function() {
+                Asteroids.gameTurnRight(false);
+            };
+
             document.getElementById('up-key').onmousedown = function() {
                 Asteroids.gameGoForward(true);
             };
             document.getElementById('up-key').onmouseup = function() {
                 Asteroids.gameGoForward(false);
+            };
+            document.getElementById('up-key').ontouchstart = function() {
+                Asteroids.gameGoForward(true);
+            };
+            document.getElementById('up-key').ontouchend = function() {
+                Asteroids.gameGoForward(false);
+            };
+
+            document.getElementById('space-key').ontouchstart = function() {
+                Asteroids.gameFire(true);
+            };
+            document.getElementById('space-key').ontouchend = function() {
+                Asteroids.gameFire(false);
             };
             document.getElementById('space-key').onmousedown = function() {
                 Asteroids.gameFire(true);
@@ -38,6 +65,7 @@
             document.getElementById('space-key').onmouseup = function() {
                 Asteroids.gameFire(false);
             };
+
             document.getElementById('p-key').onclick = function() {
                 Asteroids.handleGamePause();
             };
