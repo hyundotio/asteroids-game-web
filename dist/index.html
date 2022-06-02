@@ -1,0 +1,162 @@
+<!doctype html><html><head><meta charset="utf-8"/><title>Asteroids</title><script>window.onload = () => {
+            Asteroids.initGame();
+            Asteroids.runGame(document.getElementById('canvas'), document.getElementById('canvas-container'));
+
+            //Bind Keys
+            document.addEventListener('keyup', Asteroids.gameKeyUp);
+            document.addEventListener('keydown', Asteroids.gameKeyDown);
+
+            //Touch Controls
+            document.getElementById('left-key').onmousedown = function() {
+                Asteroids.gameTurnLeft(true);
+            };
+            document.getElementById('left-key').onmouseup = function() {
+                Asteroids.gameTurnLeft(false);
+            };
+            document.getElementById('right-key').onmousedown = function() {
+                Asteroids.gameTurnRight(true);
+            };
+            document.getElementById('right-key').onmouseup = function() {
+                Asteroids.gameTurnRight(false);
+            };
+            document.getElementById('up-key').onmousedown = function() {
+                Asteroids.gameGoForward(true);
+            };
+            document.getElementById('up-key').onmouseup = function() {
+                Asteroids.gameGoForward(false);
+            };
+            document.getElementById('space-key').onmousedown = function() {
+                Asteroids.gameFire(true);
+            };
+            document.getElementById('space-key').onmouseup = function() {
+                Asteroids.gameFire(false);
+            };
+            document.getElementById('p-key').onclick = function() {
+                Asteroids.handleGamePause();
+            };
+
+            //Touch toggler
+            document.getElementById('toggle-touch-controls').onclick = function() {
+                const el = document.getElementById('touch-controls');
+                if (el.className !== 'active') {
+                    el.className = 'active';
+                } else {
+                    el.className = '';
+                }
+            }
+        }</script><style>.button-reset {
+            border: none;
+            margin: 0;
+            padding: 0;
+            width: auto;
+            overflow: visible;
+            background: transparent;
+            color: inherit;
+            font: inherit;
+            line-height: normal;
+            -webkit-font-smoothing: inherit;
+            -moz-osx-font-smoothing: inherit;
+            -webkit-appearance: none;
+        }
+        
+        .button-reset::-moz-focus-inner {
+            border: 0;
+            padding: 0;
+        }
+        
+        html,
+        body {
+            font-family: sans-serif;
+            font-size: 12px;
+        }
+        
+        html,
+        body,
+        div,
+        main,
+        canvas {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html,
+        body,
+        main {
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .game-container {
+            position: relative;
+        }
+        
+        .key {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            height: 48px;
+            width: 48px;
+            background-color: rgba(0, 0, 0, 0.25);
+            border-radius: 6px;
+            position: absolute;
+            font-size: 20px;
+            line-height: 20px;
+        }
+        
+        .key.long {
+            width: 96px;
+            left: 0;
+            bottom: 0;
+        }
+        
+        .key.right {
+            right: 0;
+            bottom: 0;
+        }
+        
+        .key.left {
+            right: 96px;
+            bottom: 0;
+        }
+        
+        .key.up {
+            right: 48px;
+            bottom: 48px;
+        }
+        
+        .key.pause {
+            top: 0;
+            right: 0;
+        }
+        
+        #touch-controls {
+            position: absolute;
+            left: 16px;
+            bottom: 16px;
+            height: calc(100% - 32px);
+            width: calc(100% - 32px);
+            display: none;
+        }
+        
+        #touch-controls.active {
+            display: block;
+        }
+        
+        .key:active {
+            background-color: rgba(0, 0, 0, 0.125);
+        }
+        /** This is the only thing that is needed to run the game! **/
+        
+        #canvas-container,
+        #canvas {
+            width: 512px;
+            height: 384px;
+        }</style><script defer="defer" src="Asteroids.js"></script></head><body><main><div class="game-container"><div id="canvas-container"><canvas id="canvas"></canvas></div><div id="touch-controls"><button class="key left button-reset" id="left-key">←</button> <button class="key right button-reset" id="right-key">→</button> <button class="key up button-reset" id="up-key">↑</button> <button class="key long button-reset" id="space-key"></button> <button class="key pause button-reset" id="p-key">P</button></div></div><ul class="instructions"><li><b>Fire missile:</b> Spacebar</li><li><b>Accelerate:</b> Up arrow</li><li><b>Turn counter-clockwise:</b> Left Arrow</li><li><b>Turn clockwise:</b> Right Arrow</li><li><b>Pause:</b> p</li><li><button id="toggle-touch-controls">Toggle Touch Controls</button></li></ul></main></body></html>
